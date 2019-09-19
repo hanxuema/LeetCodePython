@@ -6,13 +6,13 @@ class Solution(object):
         """
         if not strs or len(strs) == 0:
             return ""
-       
-        for i in range(len(strs[0])):
+        
+        for idx in range(len(strs[0])):
             for str in strs:
-                if len(str) <= i or strs[0][i] != str[i]:
-                    return str[0][:i]
+                if len(str) <= idx or strs[0][idx] != str[idx]:
+                    return strs[0][:idx]
         return strs[0]
 
 s = Solution()
-t= ["flower","flow","flight"]
+t= ["aa","a"]
 print(s.longestCommonPrefix(t))
