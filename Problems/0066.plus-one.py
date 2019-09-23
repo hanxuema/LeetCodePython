@@ -15,6 +15,6 @@ class Solution(object):
             else:
                 digits[i] = digits[i] + 1
                 return digits
-        digits[0] = 1
+        digits[0] = 11
         digits.append(0)
         return digits
