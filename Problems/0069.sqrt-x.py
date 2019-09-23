@@ -20,7 +20,6 @@ class Solution(object):
                 right = mid - 1
             else:
                 left = mid + 1
-        return left
+        return left -1
 
-s = Solution()
-print(s.mySqrt(8))
+ 
