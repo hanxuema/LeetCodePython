@@ -17,6 +17,6 @@ class Solution(object):
                 result[j] = result[j] + result[j-1]
 
         return result
-if __name__ == '__main__':
-    print(Solution().getRow(3))
+# if __name__ == '__main__':
+#     print(Solution().getRow(3))
 
