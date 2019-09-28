@@ -9,16 +9,17 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        # check if minus number
-        isMinus = x < 0
-        # convert x from int to string
-        # loop from end to begin
-        res = int(str(abs(x))[::-1])
-        if res > 2 ** 31 -1 or res <  -2 ** 31:
+        isPos = x > 0
+        res = 0
+        a = abs(x)
+        while a != 0:
+            lastDigit = a % 10
+            res = res * 10 + lastDigit
+            a = a // 10 # remove last digit
+        if not isPos:
+            res = 0 - res
+        if res >  2 ** 31 or res < -(2 ** 31 -1):
             return 0
-        if isMinus:
-            return 0 - res
-        else:
-            return res
+        return res
 
 

@@ -11,5 +11,12 @@ class Solution(object):
         """
         if x < 0:
             return False
+        newNumber =  0
+        a = x
+        while a != 0:
+            lastDigit = a  % 10
+            newNumber = newNumber * 10 + lastDigit
+            a = a // 10
+        return x == newNumber
         
 
