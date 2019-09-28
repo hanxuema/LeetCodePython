@@ -22,13 +22,18 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        isGreaterThanZero = -1
-        if x > 0:
-            isGreaterThanZero = 1
-        res = int(str(abs(x))[::-1])
-        if res > 2 ** 31 -1 or res < -2 ** 31:
+        isPos = x > 0
+        res = 0
+        a = abs(x)
+        while(a != 0):
+            temp = a % 10
+            res = res * 10 + temp
+            a = a // 10
+        if isPos == False:
+            res = 0 - res
+        if res > 2 ** 31 -1 or res < -(2 **31):
             return 0
-        return res * isGreaterThanZero
+        return res
 
 
 s = Solution()
