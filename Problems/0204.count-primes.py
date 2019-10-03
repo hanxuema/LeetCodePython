@@ -11,6 +11,8 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        if n <=1:
+            return 0
         nums = [None] * n
         nums[0] = False
         nums[1] = False
