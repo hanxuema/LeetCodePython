@@ -13,12 +13,9 @@ class Solution(object):
         """
         if num <= 0:
             return False
-        while num % 2 == 0:
-            num = num // 2
-        while num % 3 == 0:
-            num = num // 3
-        while num % 5 == 0:
-            num = num // 5
+        for n in [2,3,5]:
+            while num % n == 0:
+                num = num // n
         return num == 1
         
 
