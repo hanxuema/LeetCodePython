@@ -20,14 +20,13 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        pointer = root
-        while pointer:
-            if p.val < pointer.val and q.val < pointer.val:
-                pointer = pointer.left
-            elif p.val > pointer.val and q.val > pointer.val:
-                pointer = pointer.right
-            else:
-                return pointer
-        
+        if root is None or p is None or q is None:
+            return None
+        if min(p.val, q.val) > root.val:
+            return self.lowestCommonAncestor(root.right, p, q )
+        elif max(p.val, q.val) < root.val:
+            return self.lowestCommonAncestor(root.left, p, q)
+        else:
+            return root
 # @lc code=end
 
