@@ -11,10 +11,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        nums.sort()
-        for i in range(len(nums)):
-            if nums[i] != i:
-                return i
-        return len(nums)
+        numset = set(nums)
+        for n in range(len(nums) + 1):
+            if n not in numset:
+                return n 
+
 # @lc code=end
 
