@@ -11,11 +11,12 @@ class Solution(object):
         :type num: int
         :rtype: int
         """ 
-        while num >= 10:
-            temp = num % 10 
-            num = num // 10
-            num = num + temp
-        return num
+        if num <= 0:
+            return 0
+        if num % 9 == 0:
+            return 9
+        else:
+            return num % 9
 
 # Solution().addDigits(38)
 # @lc code=end
