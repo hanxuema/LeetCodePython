@@ -56,36 +56,39 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n == 0:
-            return 0
-        if n <= 2:
-            return 1
-        lookup = {}
-        for i in range(1, n):
-            maxVal = max(lookup)
-            if lookup[maxVal] - maxVal == 1: #2 has 3 already
-                lookup[maxVal+1] = 1
+      
+        left, right = 0, n
+        while left <= right:
+            mid = (right + left) //2
+            sums = mid * (mid + 1) // 2
+            if sums == n:
+                return mid
+            elif sums > n:
+                right = mid-1
             else:
-                lookup[maxVal] += 1
-        return max(lookup)
-                
-class TestStringMethods(unittest.TestCase):
+                left = mid +1
+        return right 
+
+# @lc code=end
+
+# class TestStringMethods(unittest.TestCase):
        
-    def test1and2(self):
-        s = Solution()
-        self.assertEqual(s.arrangeCoins(1),1)
-        self.assertEqual(s.arrangeCoins(2),1)
+#     def test1and2(self):
+#         s = Solution()
+#         self.assertEqual(s.arrangeCoins(1),1)
+#         self.assertEqual(s.arrangeCoins(2),1)
     
-    def test345(self):
-        s = Solution()
-        # self.assertEqual(s.arrangeCoins(3),2)
-        # self.assertEqual(s.arrangeCoins(4),2)
-        self.assertEqual(s.arrangeCoins(5),2)
+#     def test345(self):
+#         s = Solution()
+#         self.assertEqual(s.arrangeCoins(3),2)
+#         self.assertEqual(s.arrangeCoins(4),2)
+#         self.assertEqual(s.arrangeCoins(5),2)
 
 
 
 if __name__ == '__main__':
-    unittest.main()
+    # print(8 * 3)
+    unittest.main() 
 # print(s.arrangeCoins(8))
-# @lc code=end
+
 
