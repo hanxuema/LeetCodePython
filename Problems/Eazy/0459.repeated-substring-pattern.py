@@ -11,7 +11,16 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        return s in (2*s)[1:-1]
+        # return s in (2*s)[1:-1]
+        n = len(s)
+        a = n // 2
+        while a > 0:
+            if n % a == 0:
+                m = n // a
+                if s == s[:a] * m:
+                    return True
+            a -= 1
+        return False
 
         
 # @lc code=end

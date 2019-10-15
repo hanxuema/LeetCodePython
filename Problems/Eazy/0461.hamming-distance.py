@@ -12,13 +12,11 @@ class Solution(object):
         :type y: int
         :rtype: int
         """
-        t = x^ y
-        ans = 0
+        t = x ^ y
+        res = 0
         while t > 0:
-            # ans += t & 1
-            # t = t >> 1
-            ans += t % 2
+            res += t % 2
             t = t // 2
-        return ans     
+        return res
 # @lc code=end
 
