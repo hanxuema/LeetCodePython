@@ -8,47 +8,21 @@
 
 
 class Solution(object):
-    # https://www.youtube.com/watch?v=4-SF0-p98NM
-    # difficult to understand
+  
     def isValidSudoku(self, board):
-        s = set()
-        s.add((1,3))
-        for row in range(len(board)):
-            rows = set()
-            cols = set()
-            cubes = set()
-            for col in range(len(board[row])): 
-                if board[row][col] != "." and  board[row][col] in rows:
-                    print("{} {} {} row, col board[row][col]".format(row, col, board[row][col]))
-                    return False
-                else:
-                    rows.add(board[row][col])
-                print("{} rows".format(rows))
-
-                if board[col][row] != "." and board[col][row] in cols:
-                    print("{} {} {} col, row board[col][row]".format(col, row, board[col][row]))
-                    return False
-                else:
-                    cols.add(board[col][row])
-                print("{} cols".format(cols))
-                rowIndex = 3 * (row // 3)
-                colIndex = 3 * (row % 3)
-                board1 = rowIndex + col // 3
-                board2 = colIndex + col % 3
-                print("{} {} {} board1, board2 board[board1][board2]".format(board1, board2, board[board1][board2]))
-
-                if board[board1][board2] != "." and board[board1][board2] in cubes:
-                    print("{} cubes".format(cubes))
-                    return False
-                else:
-                    cubes.add(board[board1][board2])
-        return True
-
-    def printBoard(self, board):
+        if board is None:
+            return False
+        cache = set()
         for row in range(len(board)):
             for col in range(len(board[row])):
                 val = board[row][col]
-                print("{} {} {}".format(row, col, val))
+                if val != ".":
+                    if (val, row) in cache or (col, val) in cache or (row//3, col//3, val) in cache:
+                        return False
+                    cache.add((val,row))
+                    cache.add((col,val))
+                    cache.add((row//3,col//3,val))
+        return True
 
 # @lc code=end
 
