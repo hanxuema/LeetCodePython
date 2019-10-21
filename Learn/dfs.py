@@ -8,17 +8,19 @@ graph = {
 }
 
 def dfs(graph, s):
-    stack = []
-    stack.append(s)
+    res = [s]
+    stack = [s]
     visited = set()
     visited.add(s)
-    while (len(stack) > 0):
-        vertex = stack.pop()
-        nodes = graph[vertex]
+    while len(stack) > 0 :
+        v = stack.pop() # pop() returns the last 1, pop(0) returns the first 1
+        nodes = graph[v]
         for n in nodes:
             if n not in visited:
-                stack.append(n)
                 visited.add(n)
-        print(vertex)
+                res.append(n)
+                stack.append(n)
+    print(res)
+    return res    
 
-dfs(graph, "e")
+print("test {} is {} ".format("e", dfs(graph, "e") == ['e','c','d','b','f','a']))
