@@ -9,28 +9,18 @@ graph = {
 }
 
 def bfs(graph, s):
-    res = []
-    queue = []
-    queue.append(s)
+    res = [s]
+    queue = [s]
     visited = set()
     visited.add(s)
     while (len(queue) > 0):
-        vertex = queue.pop(0)
-        print("current vertex is {} ".format(vertex))
-        nodes = graph[vertex]
-        print("current vertex has nodes {}".format(nodes))
-        for w in nodes:
-            print("     visit node {} of vertex {} ".format(w, vertex))
-            if w not in visited:
-                print("             node {} is not visited before".format(w))
-                queue.append(w)
-                print("             node {} is added to queue, queue is {} ".format(w, queue))
-                visited.add(w)
-                res.append(w)
-            else:
-                print("             node {} is visited before".format(w))
-    print("final queue {}, visited {}, res {}".format(queue, visited, res))
-    res = [s] + res
+        v = queue.pop(0)
+        nodes = graph[v]
+        for n in nodes:
+            if n not in visited:
+                visited.add(n)
+                queue.append(n)
+                res.append(n)
     return res
 
 
