@@ -7,12 +7,9 @@
 # @lc code=start
 class Solution(object):
     def letterCombinations(self, digits):
-        """
-        :type digits: str
-        :rtype: List[str]
-        """
-        if len(digits) == 0:
-            return []
+        res = []
+        if digits is None or len(digits) == 0:
+            return res
         keyMap = {
             "0":" ",
             "1":"*",
@@ -25,18 +22,22 @@ class Solution(object):
             "8":"tuv",
             "9":"wxyz"            
         }
-        res = []
-        for d in digits:
-            if len(res) == 0:
-                for c in keyMap[d]:
-                    res.append(c)
-            else:
-                temp = []
-                for r in res:
-                    for c in keyMap[d]:
-                        temp.append(r+c)
-                res = temp
+        sb , index = "", 0
+        self.dfs(res, digits, sb, index, keyMap)
         return res
+    
+    def dfs(self, res, digits, sb, index, keyMap):
+        if len(sb) > len(digits):
+            return
+        if len(sb) == len(digits):
+            res.append(sb)
+            return
+        values = keyMap[digits[index]]
+        for i in range(len(values)):
+            ss = sb + values[i]
+            self.dfs(res,digits,ss,index+1,keyMap)
         
 # @lc code=end
 
+s = Solution()
+print(s.letterCombinations("23"))
