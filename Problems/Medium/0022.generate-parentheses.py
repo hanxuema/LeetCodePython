@@ -19,7 +19,7 @@ class Solution(object):
         return res
 
     def helper(self, left, right, item, res):
-        print("left {} right {} item {} res".format(left,right,item,res))
+        print("left {} right {} item {} res {}".format(left,right,item,res))
         if right < left:
             return 
         if left == 0 and right == 0:
