@@ -5,21 +5,21 @@
 #
 class Solution(object):
     def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        if len(s) == 0:
+        if s is None:
             return True
-        left, right =  0, len(s) -1
-        while left< right:
-            while left < right and not s[left].isalnum():
+        left, right = 0, len(s) -1
+        while left <= right:
+            # filter all the prefix none number none alpha char
+            while left <= right and not s[left].isalnum():
                 left += 1
-            while left < right and not s[right].isalnum():
+            # filter all the sufix none number none alpha char
+            while left <= right and not s[right].isalnum():
                 right -= 1
-            if s[left].lower() != s[right].lower():
+            # compare
+            if left <= right and s[left].lower() != s[right].lower():
                 return False
-            left += 1
-            right -= 1
+            else:
+                left += 1
+                right -= 1
         return True
 
