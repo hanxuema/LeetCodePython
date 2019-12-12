@@ -32,6 +32,25 @@ class Solution(object):
         self.dfs(root.left, res)
         self.dfs(root.right, res)
         return res
+
+    def preorderTraversalIteratively(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        res = []
+        stack = [root] 
+        while stack:
+            node = stack.pop()
+            if node is None:
+                continue
+            res.append(node.val)
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+
+        return res
         
 input = [1,None,2,3]
 s = Solution()
